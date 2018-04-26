@@ -10,7 +10,7 @@ app.use(express.static(path.resolve(__dirname, "public")));
 
 // 路由
 // 课程1：md5加密
-app.use('/lesson1', require('./router/lesson1'))
+// app.use('/lesson1', require('./router/lesson1'))
 
 // 课程2：爬虫入门
 app.use('/lesson2', require('./router/lesson2'))
