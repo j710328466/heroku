@@ -1,9 +1,14 @@
 language: node_js
+
 node_js:
  - 'v8.9.1'
 
 script: make test
+
 deploy:
   provider: heroku
   api_key:
     secure: "34fa0694-3efd-48f3-8721-c0514f8384a6"
+
+services:
+  mongodb
