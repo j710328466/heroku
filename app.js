@@ -1,5 +1,9 @@
 const express = require('express')
 const path = require('path')
+const cookieParser = require('cookie-parser')
+const sessionParser = require('express-session')
+// 引入 redis
+// const redisStore = require('connect-redis')(session);
 const PORT = process.env.PORT || 3000
 
 var app = express()
@@ -8,9 +12,27 @@ var app = express()
 // 静态路径
 app.use(express.static(path.resolve(__dirname, "public")));
 
-// 路由
+// 使用cookie
+app.use(cookieParser())
+
+// 使用session
+app.use(sessionParser({
+  name: 'author',
+  // 储存位置
+  // store: new redisStore(),
+  secret: 'recommand 128 bytes random string',
+  cookie: {
+    maxAge: 60 * 1000
+  },
+  //每次请求都重设一个cookie
+  rolling: false,
+  resave: true,
+  // 是指无论有没有session cookie，每次请求都设置个session cookie ，默认给个标示为 connect.sid
+  saveUninitialized: false
+}))
+
 // 课程1：md5加密
-// app.use('/lesson1', require('./router/lesson1'))
+app.use('/lesson1', require('./router/lesson1'))
 
 // 课程2：爬虫入门
 app.use('/lesson2', require('./router/lesson2'))
