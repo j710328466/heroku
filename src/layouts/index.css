@@ -1,0 +1,21 @@
+.header {
+  padding: 0 20px;
+  background: #fff;
+  font-size: 20px;
+}
+
+.normal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+}
+
+.main {
+  padding: 0 8px;
+  flex: 1 0 auto;
+}
